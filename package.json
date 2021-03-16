@@ -21,13 +21,13 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "prop-types": "^15.7.2",
-    "webpack": "^4.39.1",	
+    "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.8.0"
-    
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-transform-runtime": "^7.13.10",
     "axios": "^0.21.0",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
@@ -35,8 +35,11 @@
     "jquery": "^3.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
     "style-loader": "^1.0.0",
     "styled-components": "^5.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack-merge": "^4.2.2"
   }
 }

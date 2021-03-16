@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         width: 100%;
         height: 100%;
         color: #000000;
-        font-family: 'Work Sans', sans-serif;
+        font-family: 'Roboto Mono', monospace;
         font-size: 100%;
     }
 
