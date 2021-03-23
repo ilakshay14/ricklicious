@@ -4,7 +4,8 @@ const GlobalStyle = createGlobalStyle`
     html,body{
         width: 100%;
         height: 100%;
-        color: #000000;
+        color: ${({ theme }) => theme?.text || '#000'};
+        background: ${({ theme }) => theme?.background || '#fff'};
         font-family: 'Roboto Mono', monospace;
         font-size: 100%;
     }

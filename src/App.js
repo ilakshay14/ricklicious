@@ -1,11 +1,14 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import banner from './banner.png';
 import Characters from './components/Characters/Characters';
 import Search from './components/Search/search';
+import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 import { CHAR_INIT } from './constants/action.constants';
 import { FlexRow } from './theme/defaultStyles';
+import { lightTheme, darkTheme } from './theme/theme';
+import GlobalStyle from './theme/globalStyles';
 
 const StyledLayout = styled.div`
     max-width: 1200px;
@@ -39,12 +42,17 @@ const StyledLayout = styled.div`
 const App = () => {
 
     const dispatch = useDispatch();
+    const [theme, setTheme] = useState('light');
+
+    const toggleTheme = () => {
+        theme === 'light' ? setTheme('dark') : setTheme('light');
+    }
 
     useEffect(() => {
         fetchCharacters();
     }, []);
 
-    async function fetchCharacters(){
+    async function fetchCharacters() {
         const results = await (await fetch('https://rickandmortyapi.com/api/character')).json();
         console.log(results.results[0]);
         dispatch({
@@ -58,12 +66,16 @@ const App = () => {
     }
 
     return (
-        <StyledLayout>
-            <header>
-                <img src={banner}/>
-            </header>
-            <Search/>
-        </StyledLayout>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+            <GlobalStyle />
+            <StyledLayout>
+                <ThemeToggler handleThemeToggle={toggleTheme} />
+                <header>
+                    <img src={banner} />
+                </header>
+                <Search />
+            </StyledLayout>
+        </ThemeProvider>
     );
 }
 

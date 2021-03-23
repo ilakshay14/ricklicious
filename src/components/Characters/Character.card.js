@@ -8,7 +8,7 @@ const Card = styled.div`
     //padding: 10px;
     overflow: hidden;
     border-radius: 5px;
-    border: 1px solid rgba(34,36,38,.1);
+    border: ${({ theme }) => theme?.border};
 
     cursor: pointer;
     transition: all .7s ease-out;
@@ -21,9 +21,9 @@ const Card = styled.div`
 
     :hover{
         
-        -webkit-box-shadow: 3px 4px 25px 2px rgba(0,0,0,0.75);
-        -moz-box-shadow: 3px 4px 25px 2px rgba(0,0,0,0.75);
-        box-shadow: 3px 4px 25px 2px rgba(0,0,0,0.75);
+        -webkit-box-shadow: ${({ theme }) => theme?.['box-shadow']};
+        -moz-box-shadow: ${({ theme }) => theme?.['box-shadow']};
+        box-shadow: ${({ theme }) => theme?.['box-shadow']};
     }
 
     .card__content{
@@ -36,13 +36,14 @@ const Card = styled.div`
         }
         .card__meta, .card__extra{
             font-size: 90%;
-            color: rgba(0,0,0, 0.4);
+            //color: rgba(0,0,0, 0.4);
+            color: ${({ theme }) => theme?.meta};
         }
 
         .card__desc{
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
-            color: rgba(0,0,0, 0.68);
+            color: ${({ theme }) => theme?.description};
             height: 40px;
         }
 
