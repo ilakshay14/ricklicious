@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled, { ThemeProvider } from 'styled-components';
 import banner from './banner.png';
-import Characters from './components/Characters/Characters';
 import Search from './components/Search/search';
 import ThemeToggler from './components/ThemeToggler/ThemeToggler';
 import { CHAR_INIT } from './constants/action.constants';
 import { FlexRow } from './theme/defaultStyles';
 import { lightTheme, darkTheme } from './theme/theme';
 import GlobalStyle from './theme/globalStyles';
+import Pagination from './components/pagination/pagination';
 
 const StyledLayout = styled.div`
     max-width: 1200px;
@@ -45,22 +45,32 @@ const App = () => {
     const [theme, setTheme] = useState('light');
 
     const toggleTheme = () => {
+        // let newTheme = theme === 'light' ? 'dark' : 'light';
+
+        // localStorage.setItem('ricktheme', newTheme);
+        // setTheme(newTheme);
         theme === 'light' ? setTheme('dark') : setTheme('light');
     }
 
     useEffect(() => {
+        // const themeInCookie = localStorage.getItem('ricktheme');
+        // if (themeInCookie) {
+        //     console.log(themeInCookie);
+        //     themeInCookie === 'light' ? setTheme('light') : setTheme('dark');
+        // }
         fetchCharacters();
     }, []);
 
     async function fetchCharacters() {
         const results = await (await fetch('https://rickandmortyapi.com/api/character')).json();
-        console.log(results.results[0]);
+        console.log(results);
         dispatch({
             type: CHAR_INIT,
             payload: {
                 characters: results.results,
                 pages: results.info.pages,
-                next: results.info.next
+                next: results.info.next,
+                prev: results.info.prev
             }
         })
     }

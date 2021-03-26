@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Characters from "../Characters/Characters";
+import Pagination from "../pagination/pagination";
 import StyledSearch from "./StyledSearch";
 
 const Search = () => {
@@ -38,6 +39,7 @@ const Search = () => {
 
             </StyledSearch>
             <Characters search={searchParam} />
+            <Pagination />
         </>
     );
 }
