@@ -13,6 +13,7 @@ const Characters = ({ search }) => {
     useEffect(() => {
         if (search.trim() !== '') {
             //console.log({ search });
+            setError(false)
             let results = characters.filter(char => char.name.toLowerCase().includes(search.toLowerCase()));
             //console.log(results);
             if (results.length > 0) {
