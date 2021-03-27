@@ -55,6 +55,10 @@ const Card = styled.div`
         
     }
 
+    @media screen and (max-width: 42rem) {
+        margin-top: 10px;
+    }
+
 `;
 
 const CharacterCard = (char) => {
