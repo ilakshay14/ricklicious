@@ -4,7 +4,6 @@ import Pagination from "../pagination/pagination";
 import StyledSearch from "./StyledSearch";
 
 const Search = () => {
-    const [apiSearch, setApiSearch] = useState('people');
     const [searchParam, setSearchParam] = useState('');
     const [showShout, setShowShout] = useState(false);
 

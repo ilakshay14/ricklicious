@@ -20,6 +20,7 @@ const StyledPagination = styled.div`
         cursor: pointer;
 
         ion-icon{
+            color: ${({ theme }) => theme?.text};
             transition: all 0.2s ease-in-out;
         }        
 
