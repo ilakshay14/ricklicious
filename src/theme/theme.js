@@ -4,7 +4,8 @@ export const lightTheme = {
     meta: 'rgba(0,0,0, 0.4)',
     description: 'rgba(0,0,0, 0.68)',
     border: '1px solid rgba(34,36,38,.1)',
-    'box-shadow': '3px 4px 25px 2px rgba(0,0,0,0.75)'
+    'box-shadow': '3px 4px 25px 2px rgba(0,0,0,0.75)',
+    divider: '#000'
 }
 export const darkTheme = {
     text: '#ffff',
@@ -12,5 +13,6 @@ export const darkTheme = {
     meta: 'rgba(255,255,255, 0.5)',
     description: 'rgba(255,255,255, 0.8)',
     border: '1px solid rgba(255,255,255,0.5)',
-    'box-shadow': '3px 4px 25px 2px rgba(255,255,255,0.65)'
+    'box-shadow': '3px 4px 25px 2px rgba(255,255,255,0.65)',
+    divider: '#fff'
 }

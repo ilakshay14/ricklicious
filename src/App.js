@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Route } from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import banner from './banner.png';
 import Search from './components/Search/search';
@@ -8,7 +9,7 @@ import { CHAR_INIT } from './constants/action.constants';
 import { FlexRow } from './theme/defaultStyles';
 import { lightTheme, darkTheme } from './theme/theme';
 import GlobalStyle from './theme/globalStyles';
-import Pagination from './components/pagination/pagination';
+import SingleCharacter from './components/Characters/SingleCharacter';
 
 const StyledLayout = styled.div`
     max-width: 1200px;
@@ -63,7 +64,7 @@ const App = () => {
 
     async function fetchCharacters() {
         const results = await (await fetch('https://rickandmortyapi.com/api/character')).json();
-        console.log(results);
+        //console.log(results);
         dispatch({
             type: CHAR_INIT,
             payload: {
@@ -83,7 +84,9 @@ const App = () => {
                 <header>
                     <img src={banner} />
                 </header>
-                <Search />
+                <Route exact path='/' component={Search} />
+                <Route path='/character/:id' component={SingleCharacter} />
+                {/* <Search /> */}
             </StyledLayout>
         </ThemeProvider>
     );

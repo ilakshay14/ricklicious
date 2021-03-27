@@ -4,16 +4,20 @@ import Container from "../../theme/container";
 import CharacterCard from "./Character.card";
 import StyledCharacters from "./StyledCharacters";
 
-const Characters = ({search}) => {
+const Characters = ({ search }) => {
 
     const characters = useSelector(state => state.characters);
     const [searchVal, setSearchVal] = useState(null);
     const [error, setError] = useState(false);
 
-    useEffect(()=>{
-        if(search.trim()!==''){
+    useEffect(() => {
+        if (search.trim() !== '') {
+            //console.log({ search });
             let results = characters.filter(char => char.name.toLowerCase().includes(search.toLowerCase()));
-            if(results.length > 0) setSearchVal(results);
+            //console.log(results);
+            if (results.length > 0) {
+                setSearchVal(results);
+            }
             else {
                 fetchSearchCharacters(search)
             }
@@ -23,16 +27,16 @@ const Characters = ({search}) => {
                 setError(false)
             }, 2000);
         }
-        
+
     }, [search]);
 
-    async function fetchSearchCharacters(charName){
+    async function fetchSearchCharacters(charName) {
         const results = await (await fetch(`https://rickandmortyapi.com/api/character/?name=${charName}`)).json();
-        
-        if(results.error){
+
+        if (results.error) {
             setError(true);
         }
-        else{
+        else {
             setSearchVal(results.results);
             // dispatch({
             //     type: CHAR_INIT,
@@ -43,31 +47,34 @@ const Characters = ({search}) => {
             //     }
             // })
         }
-        
+
     }
-    
-    if(error){
+
+    if (error) {
         return (
             <Container>
-                <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>Whaa What are you dumb Morty? This species doesn't exist in the real world. Check your galaxy hole d'bag!</h1>
+                <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Whaa What are you dumb Morty? This species doesn't exist in the real world. Check your galaxy hole d'bag!</h1>
             </Container>
         )
     }
 
     return (
         <Container>
-            <h1 style={{ textAlign: 'center', marginBottom: '20px'}}>Characters</h1>
+            <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>Characters</h1>
             <StyledCharacters>
-            {
-                !search && characters && characters.map(char =>
-                    <CharacterCard key={char.id} {...char}/>
-                )
-            }
-            {
-                searchVal && searchVal.map(char =>
-                    <CharacterCard key={char.id} {...char}/>
-                )
-            }
+                {
+                    search.trim() === '' && characters && characters.map(char =>
+                        <CharacterCard key={char.id} {...char} />
+                    )
+                }
+                {
+                    searchVal && searchVal.map(char => {
+                        //console.log({ char });
+                        return <CharacterCard key={char.id} {...char} />
+                    }
+
+                    )
+                }
             </StyledCharacters>
         </Container>
 

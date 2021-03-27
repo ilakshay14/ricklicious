@@ -16,7 +16,6 @@ const Search = () => {
         <>
             <StyledSearch>
                 <div>
-                    <p>{console.log({ showShout })}</p>
                     <input type='text' placeholder='What is it now Morty?'
                         onChange={(e) => setSearchParam(e.target.value)} />
 
@@ -26,7 +25,7 @@ const Search = () => {
                             <p>
                                 Really? I don't give a f*ck what you think, Morty! Just Morty it up your own galaxy hole!
                                 That's my new word for shitting in reverse Morty style!
-                    </p>
+                                </p>
 
                             <button onClick={() => setShowShout(false)}>
                                 Oh jeez Rick! I.. I'm sorry!

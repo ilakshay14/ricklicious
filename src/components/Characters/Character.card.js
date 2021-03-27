@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -56,18 +57,27 @@ const Card = styled.div`
 
 `;
 
-const CharacterCard = ({ name, image, species, location, status }) => {
+const CharacterCard = (char) => {
+    //console.log({ char });
+    const { id, name, image, species, location, status } = char;
     return (
+
         <Card>
-            <img src={image} alt={name} />
-            <div className='card__content'>
-                <p className='card__header'>{name}</p>
-                <p className='card__meta'>{species}</p>
-                <p className='card__desc'>{location?.name}</p>
-                <hr/>
-                <p className='card__extra'>{status}</p>
-            </div>
+            <Link to={{
+                pathname: `/character/${id}`,
+                state: char
+            }}>
+                <img src={image} alt={name} />
+                <div className='card__content'>
+                    <p className='card__header'>{name}</p>
+                    <p className='card__meta'>{species}</p>
+                    <p className='card__desc'>{location?.name}</p>
+                    <hr />
+                    <p className='card__extra'>{status}</p>
+                </div>
+            </Link>
         </Card>
+
     );
 }
 
